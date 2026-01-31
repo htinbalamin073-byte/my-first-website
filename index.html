@@ -1,22 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My First Website</title>
+  <title>Animated Button</title>
+
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      font-family: Arial, sans-serif;
+    }
+
+    button {
+      padding: 14px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 30px;
+      background: #ffcc00;
+      color: #333;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.3s;
+    }
+
+    button:hover {
+      background: #ffdd33;
+      transform: scale(1.05);
+    }
+
+    #text {
+      margin-top: 25px;
+      font-size: 36px;
+      font-weight: bold;
+      color: white;
+      opacity: 0;
+      transform: scale(0.5);
+    }
+
+    .show {
+      animation: pop 0.5s ease forwards;
+    }
+
+    @keyframes pop {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <h1>Welcome to Toke's Website</h1>
-
-  <button onclick="sayHello()">Click Me</button>
-
-  <p id="result"></p>
-
-  <script>
-    function sayHello() {
-      document.getElementById("result").innerText = "Hello";
-    }
-  </script>
-
-</body>
-</html>
+  <button onclick="sayHello()">
