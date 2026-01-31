@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My First Website</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Welcome to My Website</h1>
+    <p>Acode i am toke website</p>
+  </header>
+
+  <main>
+    <button onclick="sayHello()">Click Me</button>
+    <p id="text"></p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
