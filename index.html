@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Toke's Website</title>
+  <title>Link to QR Code</title>
+
+  <!-- QR Code library -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
 
   <style>
     body {
@@ -15,78 +18,67 @@
       flex-direction: column;
       background: linear-gradient(135deg, #667eea, #764ba2);
       font-family: Arial, sans-serif;
+      color: white;
       text-align: center;
     }
 
     h1 {
-      color: white;
-      font-size: 32px;
-      margin-bottom: 30px;
-      animation: fadeDown 1s ease;
+      margin-bottom: 20px;
+    }
+
+    input {
+      padding: 12px;
+      width: 260px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+      margin-bottom: 15px;
     }
 
     button {
-      padding: 16px 40px;
-      font-size: 20px;
+      padding: 14px 30px;
+      font-size: 18px;
       border: none;
-      border-radius: 30px;
+      border-radius: 25px;
       background: #ffcc00;
-      color: #000;
       cursor: pointer;
-      transition: transform 0.2s ease, background 0.3s ease;
     }
 
-    button:hover {
-      transform: scale(1.1);
-      background: #ffd633;
-    }
-
-    #text {
+    #qrcode {
       margin-top: 25px;
-      font-size: 36px;
-      font-weight: bold;
-      color: white;
-      opacity: 0;
-      transform: scale(0.5);
-    }
-
-    .show {
-      animation: pop 0.4s ease forwards;
-    }
-
-    @keyframes pop {
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    @keyframes fadeDown {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      background: white;
+      padding: 10px;
+      border-radius: 10px;
     }
   </style>
 </head>
 <body>
 
-  <h1>Welcome to toke's website.</h1>
+  <h1>Link ➜ QR Code</h1>
 
-  <button onclick="sayHello()">Click me</button>
+  <input id="link" type="text" placeholder="Website link ထည့်ပါ">
 
-  <div id="text">Hello</div>
+  <button onclick="generateQR()">Generate QR</button>
+
+  <div id="qrcode"></div>
 
   <script>
-    function sayHello() {
-      const text = document.getElementById("text");
-      text.classList.remove("show");
-      void text.offsetWidth;
-      text.classList.add("show");
+    function generateQR() {
+      const qrContainer = document.getElementById("qrcode");
+      qrContainer.innerHTML = ""; // clear old QR
+
+      const link = document.getElementById("link").value;
+
+      if (link === "") {
+        alert("Link တစ်ခုထည့်ပါ");
+        return;
+      }
+
+      new QRCode(qrContainer, {
+        text: link,
+        width: 200,
+        height: 200
+      });
     }
   </script>
 
