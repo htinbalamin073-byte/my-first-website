@@ -1,26 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
   <title>My First Website</title>
-  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header>
-    <h1>Welcome to toke's website</h1>
-    
-  </header>
+  <h1>Welcome to Toke's Website</h1>
 
-  <main>
-    <button onclick="sayHello()">Click Me</button>
-    <p id="text"></p>
-  </main>
+  <button onclick="sayHello()">Click Me</button>
+
+  <p id="result"></p>
 
   <script>
-  function sayHello() {
-    document.getElementById("text").innerText = "Hello";
-  }
-</script>
+    function sayHello() {
+      document.getElementById("result").innerText = "Hello";
+    }
+  </script>
+
 </body>
 </html>
