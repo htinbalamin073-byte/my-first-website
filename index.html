@@ -2,6 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+
+  <!-- ⭐ ဒီ line မဖြစ်မနေလို -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Animated Button</title>
 
   <style>
@@ -17,19 +21,13 @@
     }
 
     button {
-      padding: 14px 30px;
-      font-size: 18px;
+      padding: 16px 40px;
+      font-size: 20px;
       border: none;
       border-radius: 30px;
       background: #ffcc00;
-      color: #333;
+      color: #000;
       cursor: pointer;
-      transition: transform 0.2s, background 0.3s;
-    }
-
-    button:hover {
-      background: #ffdd33;
-      transform: scale(1.05);
     }
 
     #text {
@@ -42,7 +40,7 @@
     }
 
     .show {
-      animation: pop 0.5s ease forwards;
+      animation: pop 0.4s ease forwards;
     }
 
     @keyframes pop {
@@ -55,4 +53,17 @@
 </head>
 <body>
 
-  <button onclick="sayHello()">
+  <button onclick="sayHello()">Click me</button>
+  <div id="text">Hello</div>
+
+  <script>
+    function sayHello() {
+      const text = document.getElementById("text");
+      text.classList.remove("show");
+      void text.offsetWidth;
+      text.classList.add("show");
+    }
+  </script>
+
+</body>
+</html>
