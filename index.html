@@ -1,86 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Link to QR Code</title>
+<script>
+  function generateQR() {
+    const qrContainer = document.getElementById("qrcode");
+    qrContainer.innerHTML = "";
 
-  <!-- QR Code library -->
-  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+    let link = document.getElementById("link").value.trim();
 
-  <style>
-    body {
-      height: 100vh;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      font-family: Arial, sans-serif;
-      color: white;
-      text-align: center;
+    if (link === "") {
+      alert("Link တစ်ခုထည့်ပါ");
+      return;
     }
 
-    h1 {
-      margin-bottom: 20px;
+    // ⭐ https:// မပါရင် auto ထည့်ပေးမယ်
+    if (!link.startsWith("http://") && !link.startsWith("https://")) {
+      link = "https://" + link;
     }
 
-    input {
-      padding: 12px;
-      width: 260px;
-      border-radius: 8px;
-      border: none;
-      font-size: 16px;
-      margin-bottom: 15px;
-    }
-
-    button {
-      padding: 14px 30px;
-      font-size: 18px;
-      border: none;
-      border-radius: 25px;
-      background: #ffcc00;
-      cursor: pointer;
-    }
-
-    #qrcode {
-      margin-top: 25px;
-      background: white;
-      padding: 10px;
-      border-radius: 10px;
-    }
-  </style>
-</head>
-<body>
-
-  <h1>Link ➜ QR Code</h1>
-
-  <input id="link" type="text" placeholder="Website link ထည့်ပါ">
-
-  <button onclick="generateQR()">Generate QR</button>
-
-  <div id="qrcode"></div>
-
-  <script>
-    function generateQR() {
-      const qrContainer = document.getElementById("qrcode");
-      qrContainer.innerHTML = ""; // clear old QR
-
-      const link = document.getElementById("link").value;
-
-      if (link === "") {
-        alert("Link တစ်ခုထည့်ပါ");
-        return;
-      }
-
-      new QRCode(qrContainer, {
-        text: link,
-        width: 200,
-        height: 200
-      });
-    }
-  </script>
-
-</body>
-</html>
+    new QRCode(qrContainer, {
+      text: link,
+      width: 200,
+      height: 200
+    });
+  }
+</script>
