@@ -17,6 +17,10 @@
     <p id="text"></p>
   </main>
 
-  <script src="script.js"></script>
+  <script>
+  function sayHello() {
+    document.getElementById("text").innerText = "Hello";
+  }
+</script>
 </body>
 </html>
